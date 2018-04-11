@@ -6,6 +6,7 @@ const localdb = require("../db")
 
 const commentdb = firebase.firestore().collection('commentdb');
 const dbb = firebase.app().database();
+const xss = require("xss");
 // const commentdb = firebase.firestore().collection('commentdb');
 
 
@@ -46,7 +47,7 @@ module.exports = [auth.check, (req, res, next) => {
 		const userInfo = localdb.getInfoFromToken(req.body.token)
 
 		const comment = {
-			"comment" : req.body.comment,
+			"comment" : xss(req.body.comment),
 			"username" : userInfo.username || 'null',
 			"domain" : userInfo.domain || 'null',
 			"time": Date.now()

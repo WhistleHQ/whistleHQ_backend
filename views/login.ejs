@@ -21,13 +21,12 @@
 <form action="/getToken" method="post">
 	<div>
   	<label>emails:</label>
-  	<input type="text" name="emails" /><br/>
+  	<input type="text" name="emails" /><br />
 	</div>
 
-	<input type = "hidden" id="url_name" name = "url_name"></br>
+	<input type = "hidden" id="url_name" name = "url_name"><br />
 	<script>var name = document.URL;
         document.getElementById("url_name").value = name;</script>
-
 	<div>
 	  <input type="submit" value="Submit" />
 	</div>
@@ -35,3 +34,14 @@
 
 
 </form>
+<!--
+<b>Test</b>
+<form action="/testEmails" method="post">
+    <div>
+        <label>Test Emails:</label>
+        <input type="text" name="emails" /><br/>
+    </div>
+    <div>
+        <input type="submit" value="Submit"/>
+    </div>
+</form> -->

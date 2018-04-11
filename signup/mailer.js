@@ -1,7 +1,7 @@
 'use strict';
 
 const sgMail = require('@sendgrid/mail');
-sgMail.setApiKey(process.env.SENDGRID_KEY);
+sgMail.setApiKey(process.env.SG_KEY);
 
 const firebase = require("../auth/firebase.js").fire
 
@@ -15,7 +15,7 @@ module.exports = (emails, domain, cb) => {
 			cb(false);
 		}
 
-		const url = process.env.URL + "/login"
+		const url = "http://whistlehq.com/login"
 		const messages = []
 		for (let i = 0; i < emails.length; i++){
 			messages.push({

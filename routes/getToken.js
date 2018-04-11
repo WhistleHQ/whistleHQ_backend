@@ -18,18 +18,21 @@ module.exports = [(req, res, next) => {
 				"error" : "Must include multiple emails"
 			});
 		}	else {
-
 			//check domains of all emails, they must be some.
 			var setDomain = false;
 			for(let i=0,j=emails.length; i<j; i++) {
 
-				//check the parts after the @
+				// check the parts after the @
 				let foundDomain = emails[i].split('@')[1]
+                let blacklisted = checkFreeDomain(foundDomain)
 
 				if(!setDomain) {
 					//This should happen the first time
+                    if(blacklisted) {
+                        response.send('The email domain you entered, <b>'+foundDomain+'</b> has been blocked. Try again with different domain.')
+                        return;
+                    }
 					setDomain = foundDomain
-
 				} else if (setDomain != foundDomain) {
 					//Send error and exit
 					res.send({
