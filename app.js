@@ -8,6 +8,7 @@ const routes = require('./routes');
 
 // Express configuration
 const app = express();
+app.set('view engine', 'ejs');
 app.use(cookieParser());
 app.use(bodyParser.json({ extended: false }));
 app.use(bodyParser.urlencoded({ extended: false }));

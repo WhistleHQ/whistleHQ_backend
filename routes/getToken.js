@@ -13,10 +13,15 @@ module.exports = [(req, res, next) => {
 	const emailString = req.body.emails;
 
 	if(typeof emailString === "string") {
-		const emails = emailExtractor(emailString);
+		let emails = emailExtractor(emailString);
+		
+		//Eliminate duplicates
+		//from https://stackoverflow.com/a/45427662/3001704
+		emails = [...new Set(emails)];
+
 		if(emails.length <= 1) {
 			res.send({
-				"error" : "Must include multiple emails"
+				"error" : "Must include multiple unique emails"
 			});
 		}	else {
 			//check domains of all emails, they must be some.

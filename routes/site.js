@@ -10,9 +10,7 @@ module.exports.logout = (request, response) => {
 };
 
 module.exports.register = (request, response) => {
-	response.render('../views/register', {
-		"token": request.query.token
-	})
+	response.render('../views/register')
 }
 
 module.exports.account = [

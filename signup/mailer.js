@@ -15,7 +15,7 @@ module.exports = (emails, domain, cb) => {
 			cb(false);
 		}
 
-		const url = "http://whistlehq.com/login"
+		const url = process.env.URL + "/register";
 		const messages = []
 		for (let i = 0; i < emails.length; i++){
 			messages.push({
