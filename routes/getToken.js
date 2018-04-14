@@ -3,6 +3,7 @@ const sendTokens = require('../signup/mailer.js');
 const freeDomains = require('../free_email_domains.json');
 
 function emailExtractor(text) {
+	//This regex converts a string of email address to an array of email ids
 	return text.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi);
 }
 
@@ -13,7 +14,7 @@ module.exports = [(req, res, next) => {
 
 	if(typeof emailString === "string") {
 		const emails = emailExtractor(emailString);
-		if(emails.length < 1) {
+		if(emails.length <= 1) {
 			res.send({
 				"error" : "Must include multiple emails"
 			});
@@ -24,32 +25,25 @@ module.exports = [(req, res, next) => {
 
 				// check the parts after the @
 				let foundDomain = emails[i].split('@')[1]
-                let blacklisted = checkFreeDomain(foundDomain)
 
 				if(!setDomain) {
 					//This should happen the first time
-                    if(blacklisted) {
-                        response.send('The email domain you entered, <b>'+foundDomain+'</b> has been blocked. Try again with different domain.')
-                        return;
-                    }
 					setDomain = foundDomain
 				} else if (setDomain != foundDomain) {
 					//Send error and exit
 					res.send({
 						"error" : "All emails must be from the same domain"
 					});
-
 					next();
-
+					return;
+				} else if (freeDomains[setDomain]) {
+					//When a free domain is used.
+					res.send({
+						"error" : "Please use your official email address. Free domains are not allowed"
+					});
+					next();
 					return;
 				}
-			}
-
-			//Check if the domain is one of those free email providers
-			if(freeDomains[setDomain]) {
-				res.send({
-					"error": "Seems like a free domain, use your official email id."
-				}); next();
 			}
 
 			sendTokens(emails, setDomain, (status) => {
