@@ -14,7 +14,7 @@ app.use(bodyParser.json({ extended: false }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(errorHandler());
 
-app.get('/', routes.site.index);
+app.get('/', routes.site.login);
 app.get('/logout', routes.site.logout);
 app.get('/account', routes.site.account);
 app.get('/register', routes.site.register);

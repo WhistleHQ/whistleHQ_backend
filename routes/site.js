@@ -9,6 +9,10 @@ module.exports.logout = (request, response) => {
   response.redirect('/');
 };
 
+module.exports.login = (request, response) => {
+	response.render('../views/login')
+}
+
 module.exports.register = (request, response) => {
 	response.render('../views/register')
 }

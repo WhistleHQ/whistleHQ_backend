@@ -13,16 +13,18 @@ const localdb = require('../db');
 module.exports.check = (req, res, next) => {
 	if(req.body.token) {
 
-			//If the user details are already saved in the in-app memory
-			if(!localdb.validateToken(req.body.token)) {
-				req.body.token = false;
-			}
-
-			next();
+			localdb.validateToken(req.body.token, (result) => {
+				if(result) {
+					next();
+				}	else {
+					res.send({
+						"error": "invalid token"
+					})
+				}
+			})
 		
 		// The user details were not found in the local cache, proceed to call the server to get the details
-		}	else if(req.body.username && req.body.password) {
-
+		} else if(req.body.username && req.body.password) {
 			//GraphSQL like queries. Thanks to firestore
 			const query = userRef.where('username', '==', req.body.username);
 

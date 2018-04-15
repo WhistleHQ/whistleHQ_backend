@@ -44,23 +44,25 @@ module.exports = [auth.check, (req, res, next) => {
 		//This eliminates any parameters attached
 		const urlObj = url.parse(req.body.url);
 		const urlpath = (urlObj.host + urlObj.pathname).replace(/[^\w\s]/gi, '');
-		const userInfo = localdb.getInfoFromToken(req.body.token)
+		localdb.getInfoFromToken(req.body.token, (userInfo) => {
+			if(!userInfo) {
+				return;
+			}
+			const comment = {
+				"comment" : xss(req.body.comment),
+				"username" : userInfo.username || 'null',
+				"domain" : userInfo.domain || 'null',
+				"time": Date.now()
+			}
+	
+			dbb.ref('domain/' + urlpath).push().set(comment);
+	
+			res.send({
+				"save": "success"
+			})
 
-		const comment = {
-			"comment" : xss(req.body.comment),
-			"username" : userInfo.username || 'null',
-			"domain" : userInfo.domain || 'null',
-			"time": Date.now()
-		}
-
-
-		dbb.ref('domain/' + urlpath).push().set(comment);
-
-		res.send({
-			"save": "success"
+			next();
 		})
-
-
 
 
 	} else {

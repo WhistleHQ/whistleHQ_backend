@@ -1,11 +1,10 @@
 'use strict';
 
-//We shall save the users locally here
-//The keys here are the username
-const loggedIn = {};
+const Redis = require('ioredis');
+const redis = new Redis(process.env.REDIS_URL);
 
-//If reference by token is required
-const loggedInByUsername = {};
+//Session expiry in seconds. Default to 2 days
+const session_expiry = process.env.SESSION_EXPIRY_TIME || 172800;
 
 //generates random strings
 const tokenGen = require('casual');
@@ -13,38 +12,25 @@ const tokenGen = require('casual');
 //we don't want a username called "null" or any other reserved keyword
 const isReserved = require('reserved-words');
 
-module.exports.validateToken = (token) => {
-  if(typeof token == "string" && loggedIn[token] && loggedInByUsername[loggedIn[token]["username"]]) {
-  	return true;
-  }	else {
-  	return false;
-  }
+module.exports.validateToken = (token, cb) => {
+
+  redis.get("token_" + token, (err, result) => {
+	  if(err) {
+		  cb(false); return;
+	  }
+	  redis.get("user_"+JSON.parse(result).username, (e, r) => {
+		  if(e) {
+			  cb(false); return;
+		  }
+		  cb(true);
+		  redis.pipeline()
+			  .expire("token_" + token, session_expiry)
+			  .expire("user_"+JSON.parse(result).username, session_expiry)
+	  })
+  })
 };
 
-//identifier can be token or username
-function deleteExistingEntry(identifier) {
-
-	if(loggedIn[identifier]) {
-		// If the identifier was a token
-		delete loggedInByUsername[loggedIn[identifier]["username"]];
-		delete loggedIn[identifier];
-
-	}	else if (loggedInByUsername[identifier]) {
-		// if the identifier was a username
-		delete loggedIn[loggedInByUsername[identifier]];
-		delete loggedInByUsername[identifier]
-
-	}	else {
-		return false;
-	}
-
-	return true;
-}
-
 module.exports.saveSession = (userData) => {
-
-	//Saving session for a user with existing session?
-	deleteExistingEntry(userData.username);
 
 	if(isReserved.check(userData.username)) {
 		return false;
@@ -57,20 +43,36 @@ module.exports.saveSession = (userData) => {
 	info.timestamp = Date.now();
 
 	const token = tokenGen.uuid;
-	loggedIn[token] = Object.assign({}, info);
 
-	//This will be used for quick cross-reference
-	loggedInByUsername[info.username] = token;
+	redis.pipeline()
+		//key is the token
+		.set("token_"+token, JSON.stringify(info))
+		.expire("token_"+token, session_expiry)
+
+		//username is the token
+		.set("user_"+info.username, token)
+		.expire("user_"+info.username, session_expiry)
+		.exec(function(err, result) {
+			if(err) {
+				console.log("something wrong with server")
+			}
+		})
 
 	return token;
 
 }
 
 //Get that token
-module.exports.getInfoFromToken = (token) => {
-	if(loggedIn[token]) {
-		return loggedIn[token];
-	}
-
-	return false;
+module.exports.getInfoFromToken = (token, cb) => {
+	redis.pipeline()
+		.get("token_" + token, (err, result) => {
+			if(!result) {
+				cb(false); return;
+			}
+			var result_resolve = JSON.parse(result);
+			cb(result_resolve);
+			redis.expire("user_" + result_resolve.username, session_expiry)
+		})
+		.expire("token_" + token, session_expiry)
+		.exec();
 }
