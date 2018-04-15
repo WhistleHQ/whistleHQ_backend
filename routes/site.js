@@ -2,7 +2,9 @@
 
 const login = require('connect-ensure-login');
 
-module.exports.index = (request, response) => response.send('OAuth 2.0 Server <a href="/login">login</a> <a href="/account">account</a>');
+module.exports.about = (request, response) => {
+  response.render('about');
+};
 
 module.exports.logout = (request, response) => {
   request.logout();
@@ -16,6 +18,7 @@ module.exports.login = (request, response) => {
 module.exports.register = (request, response) => {
 	response.render('../views/register')
 }
+
 
 module.exports.account = [
   login.ensureLoggedIn(),

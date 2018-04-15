@@ -1,30 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css">
+    <meta charset="utf-8">
+    <title>WhistleHQ - Registration</title>
+    <style>
+        .col-centered{
+        width: 50%;
+        float: none;
+        margin: 0 auto;
+    }
+    </style>
+  </head>
+<body style="background-color: #4b5257">
+  <div class="container">
+  <div class="col-xs-12 col-sm-8 col-md-4 col-lg-4 col-centered">
+  <div class="jumbotron">
+      <h1>WhistleHQ</h1>
+      <br />
+      <h3>Confirm Registration</h3>
+      <br />
+        <form action="/signup" method="post">
+          <div class="form-group">
+              <label>Username:</label>
+            <input type="text" name="username" class="form-control" placeholder="Enter username">
+          </div>
+          <div class="form-group">
+              <label>Password:</label>
+            <input type="password" name="password" class="form-control" placeholder="Enter password">
+          </div>
+          <div class="form-group">
+              <label>Name:</label>
+              <input type="text" name="name" class="form-control" placeholder="Enter name"/>
+          </div>
+          <div class="custom-checkbox">
+            <label><input type="checkbox"> Remember me</label>
+          </div>
+          <input type="hidden" name="token" id="token"/>
+          <input type="submit" value="Submit" class="btn-primary form-control">
+        </form>
+      </div>
+  </div>
 
-<b>Sign up with Token</b>
-<form action="/api/register" method="post">
-    <div>
-        <label>Username:</label>
-        <input type="text" name="username" /><br/>
-    </div>
-    <div>
-        <label>Password:</label>
-        <input type="password" name="password" />
-    </div>
-    <div>
-        <label>Name:</label>
-        <input type="text" name="name" />
-    </div>
-    <input id="token" type="hidden" name="token" value="" />
-    </div>
-    <div>
-        <input type="submit" value="Submit" />
-    </div>
-</form>
-
-<script>
+  </div>
+  <script>
     (function(){
         var url = new URL(window.location.href);
         var token = url.searchParams.get("token");
-
         document.getElementById("token").value = token
     })();
 </script>
+</body>
+</html>

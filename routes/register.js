@@ -5,6 +5,7 @@ const scrypt = require("scrypt");
 const scryptParameters = scrypt.paramsSync(0.2);
 
 module.exports = (req, res, next) => {
+	debugger;
 	res.setHeader('Content-Type', 'application/json');
 
 	if(req.body.token && req.body.username && req.body.password && req.body.name) {

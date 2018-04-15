@@ -1,0 +1,224 @@
+body {
+  font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 700;
+}
+
+header.masthead {
+  position: relative;
+  background-color: #343a40;
+  background: url("../img/whistlehq-background.jpeg") no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+}
+
+header.masthead .overlay {
+  position: absolute;
+  background-color: #212529;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0.3;
+}
+
+header.masthead h1 {
+  font-size: 2rem;
+}
+
+@media (min-width: 768px) {
+  header.masthead {
+    padding-top: 12rem;
+    padding-bottom: 12rem;
+  }
+  header.masthead h1 {
+    font-size: 3rem;
+  }
+}
+/* Edits */
+header.whistle {
+  position: relative;
+  background-color: #343a40;
+  background: url("../img/garage_band.jpg") no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+}
+
+header.whistle .overlay {
+  position: absolute;
+  background-color: #212529;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0.3;
+}
+
+header.whistle h1 {
+  font-size: 2rem;
+}
+
+@media (min-width: 768px) {
+  header.whistle {
+    padding-top: 12rem;
+    padding-bottom: 12rem;
+  }
+  header.whistle h1 {
+    font-size: 3rem;
+  }
+}
+/* End */
+
+header.whistle-error {
+  position: relative;
+  background-color: #343a40;
+  background: url("../img/wanderwall.jpg") no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+}
+
+header.whistle-error .overlay {
+  position: absolute;
+  background-color: #212529;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0.3;
+}
+
+header.whistle-error h1 {
+  font-size: 2rem;
+}
+
+@media (min-width: 768px) {
+  header.whistle-error {
+    padding-top: 12rem;
+    padding-bottom: 12rem;
+  }
+  header.whistle-error h1 {
+    font-size: 3rem;
+  }
+}
+
+
+.showcase .showcase-text {
+  padding: 3rem;
+}
+
+.showcase .showcase-img {
+  min-height: 30rem;
+  background-size: cover;
+}
+
+@media (min-width: 768px) {
+  .showcase .showcase-text {
+    padding: 7rem;
+  }
+}
+
+.features-icons {
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+}
+
+.features-icons .features-icons-item {
+  max-width: 20rem;
+}
+
+.features-icons .features-icons-item .features-icons-icon {
+  height: 7rem;
+}
+
+.features-icons .features-icons-item .features-icons-icon i {
+  font-size: 4.5rem;
+}
+
+.features-icons .features-icons-item:hover .features-icons-icon i {
+  font-size: 5rem;
+}
+
+.testimonials {
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+}
+
+.testimonials .testimonial-item {
+  max-width: 18rem;
+}
+
+.testimonials .testimonial-item img {
+  max-width: 12rem;
+  box-shadow: 0px 5px 5px 0px #adb5bd;
+}
+
+.call-to-action {
+  position: relative;
+  background-color: #343a40;
+  background: url("../img/whistlehq-background.jpeg") no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+}
+
+.call-to-action .overlay {
+  position: absolute;
+  background-color: #212529;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0.3;
+}
+
+footer.footer {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+/* Additional for Modal login */
+.modal-content {border-radius: 0;box-shadow: none;}
+.modal-header {border-bottom: 1px solid #F2F2F2;}
+.modal-body {padding: 30px 15px;}
+.form .button {width: 100%; margin: 15px 0; padding: 10px 0; border: none;}
+
+.form .button.primary {color: #fff; background-color: #22E094; margin: 0 0 15px 0;}
+.form .button.primary:hover {color: #fff; background-color: #22d68e;}
+.form .button.facebook {color: #fff; background-color: #4267b2;}
+.form .button.facebook:hover {color: #fff; background-color: #3f62a8;}
+.form .button.twitter {color: #fff; background-color: #1da1f2;}
+.form .button.twitter:hover {color: #fff; background-color: #199ae5;}
+
+.form .form-control {margin: 0 0 30px 0; box-shadow: none; background: #F2F2F2; border: none; border-radius: 0;}
+.form .labelRight{float: right; cursor: pointer;}
+.form .control-label {margin: 0 0 10px 0;}
+.form .control-label a {color: #4267b2;}
+.form .control-label a:hover {color: #1da1f2; text-decoration: none;}
+
+.form p {text-align: center;}
+
+#login-button {background-color: #4CAF50;}
+#login-button:hover {color: #000000;background-color: #99ff99;}

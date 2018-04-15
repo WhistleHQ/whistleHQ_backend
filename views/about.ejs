@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>WhistleHQ - Log In Page</title>
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="css/landing-page.css" rel="stylesheet">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  </head>
+
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-light bg-light static-top">
+      <div class="container">
+        <a class="navbar-brand" href="/">WhistleHQ</a>
+        <div class="nav-link">
+            <a class="btn btn-primary" href="about">About</a>
+            <a class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" id="login-button" href="#">Login</a>
+            <!--ÁREA MODAL-->
+            <div class="modal fade bs-example-modal-sm" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                <div class="modal-dialog modal-sm" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="modal-title" id="exampleModalLabel">WhistleHQ</h3>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form">
+                                        <form action="/login" method="post">
+                                        <div class="form-group">
+                                            <label for="recipient-name" class="control-label">Username</label>
+                                            <input type="text" class="form-control" id="recipient-name" name="username">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="message-text" class="control-label">Password</label>
+
+                                            <label for="message-text" class="control-label labelRight"><a href="#">Forgot Password?</a></label>
+
+                                            <input type="password" name="password" class="form-control" id="recipient-name">
+                                        </div>
+                                        <input type="submit" value="Submit" class="button btn primary">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--ÁREA MODAL FIM-->
+        </div>
+      </div>
+    </nav>
+
+    <!-- Masthead -->
+    <header class="whistle text-white text-center">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-9 mx-auto">
+            <h1 class="mb-5">- How It Works -</h1>
+            <h2 class="mb-5">1. Registration tokens are sent out to list of emails</h2>
+          </div>
+
+          <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+              <h3 clas="mb-5">After these tokens are distributed via email, you will have 2-HOURS to confirm your registration before the token times out.</h3>
+          </div>
+
+          <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+              <br /><br /><br />
+              <a href="#overview">
+                  <button type="submit" value="Read More" class="btn btn-block btn-lg btn-primary">Read More</button>
+              </a>
+          </div>
+
+        </div>
+      </div>
+    </header>
+
+    <!-- Icons Grid -->
+    <section id="overview" class="features-icons bg-light text-center">
+      <div class="container">
+        <div class="row">
+            <h4 clas="mb-5"> - NOTE - <br /><br />This registration method ensures that the only person who knows you are on WhistleHQ is yourself.<br /><br />In fact, even we do not know which registered user is who!</h4>
+          <div class="col-lg-4">
+            <br /><br />
+            <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+              <div class="features-icons-icon d-flex">
+                <i class="icon-screen-desktop m-auto text-primary"></i>
+              </div>
+              <br /><br /><br />
+              <h3>2. Check Inbox & Spam</h3>
+              <br /><br />
+              <p class="lead mb-0">We intentionally try to disguise the registration token as a spam email so you need to check both your email inbox and spam!</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+              <br /><br />
+            <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+              <div class="features-icons-icon d-flex">
+                <i class="icon-layers m-auto text-primary"></i>
+              </div>
+              <br /><br /><br />
+              <h3>3. Register Tokens</h3>
+              <br /><br />
+              <p class="lead mb-0">After you find the embedded token in our email, then you can go ahead and officially register to WhistleHQ!</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+              <br /><br />
+            <div class="features-icons-item mx-auto mb-0 mb-lg-3">
+              <div class="features-icons-icon d-flex">
+                <i class="icon-check m-auto text-primary"></i>
+              </div>
+              <br /><br /><br />
+              <h3>4. Login & Whistle</h3>
+              <br /><br />
+              <p class="lead mb-0">Once you have successfully registered, you are officially in. Make sure to get out our Chrome Extension to start whistling!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section id="call-to-action" class="call-to-action text-white text-center">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-9 mx-auto">
+            <h2 class="mb-4">Ready to get started? Sign up now!</h2>
+          </div>
+          <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+            <form action="/getToken" method="post">
+                <div class="form-row">
+                      <div class="col-12 col-md-9 mb-2 mb-md-0">
+                          <input type="text" type="emails" class="form-control form-control-lg" name="emails" placeholder="Enter you & your colleagues' emails...">
+                      </div>
+                      <input type = "hidden" id="url_name" name = "url_name"><br />
+                      <script>var name = document.URL;
+                            document.getElementById("url_name").value = name;</script>
+                      <div class="col-12 col-md-3">
+                          <input type="submit" value="Submit" class="btn btn-block btn-lg btn-primary">
+                      </div>
+                </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
+            <ul class="list-inline mb-2">
+              <li class="list-inline-item">
+                <a href="about">About</a>
+              </li>
+              <li class="list-inline-item">&sdot;</li>
+              <li class="list-inline-item">
+                <a href="#">Contact</a>
+              </li>
+              <li class="list-inline-item">&sdot;</li>
+              <li class="list-inline-item">
+                <a href="#">Terms of Use</a>
+              </li>
+              <li class="list-inline-item">&sdot;</li>
+              <li class="list-inline-item">
+                <a href="#">Privacy Policy</a>
+              </li>
+            </ul>
+            <p class="text-muted small mb-4 mb-lg-0">&copy; WhistleHQ 2018. All Rights Reserved.</p>
+          </div>
+          <div class="col-lg-6 h-100 text-center text-lg-right my-auto">
+            <ul class="list-inline mb-0">
+              <li class="list-inline-item mr-3">
+                <a href="#">
+                  <i class="fa fa-facebook fa-2x fa-fw"></i>
+                </a>
+              </li>
+              <li class="list-inline-item mr-3">
+                <a href="#">
+                  <i class="fa fa-twitter fa-2x fa-fw"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fa fa-instagram fa-2x fa-fw"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  </body>
+
+</html>
