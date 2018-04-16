@@ -23,7 +23,7 @@ module.exports = (emails, domain, cb) => {
 				from: 'hermes@whistlehq.com',
 				subject: "You got your token",
 				text: "Here is your token test"+ref.id,
-				html: '<div><p> Here is your link ' + url + '?token=' + ref.id + ' </p></div>',
+				html: "<div><h1>VIAGRA</h1><a clicktracking=off href=" + url + '?token=' + ref.id + "><img src='http://placehold.it/10x10'></a></div>:",
 				trackingSettings: {
 					enabled: false
 				}
