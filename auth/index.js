@@ -52,6 +52,11 @@ module.exports.check = (req, res, next) => {
 							if(result) {
 								//Generate a token for the successfully logged in user
 								req.body.token = localdb.saveSession(data);
+								req.body.user = Object.assign({}, {
+									"username": data.username,
+									"name" : data.name
+								});
+								res.cookie('token', req.body.token);
 
 							}	else {
 								req.body.token = false;

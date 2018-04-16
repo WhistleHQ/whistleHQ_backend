@@ -17,14 +17,10 @@ app.use(errorHandler());
 app.use(express.static(__dirname + '/public'));
 
 app.get('/about', routes.site.about);
-// app.get('/login', routes.site.loginForm);
-// app.get('/login', routes.site.loginForm);
-// app.post('/login', routes.site.account);
 app.get('/register', routes.site.register);
 app.post('/getToken', routes.getToken);
 app.post('/signup', routes.register);
-// app.get('/logout', routes.site.logout);
-// app.get('/account', routes.site.account);
+app.post('/login', routes.site.account);
 
 app.post('/api/login', routes.login)
 app.post('/api/getToken', routes.getToken)

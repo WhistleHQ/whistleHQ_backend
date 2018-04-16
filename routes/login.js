@@ -13,6 +13,7 @@ module.exports = [auth.check, (req, res, next) => {
 				"name" : data.name,
 				"domain": data.domain || "No domain found (It was created during testing)"
 			});
+			res.cookie("token", req.body.token)
 			next();
 		})
 
